@@ -21,6 +21,7 @@ class Queue:
 # Example usage:
 # Create a queue
 deck_queue = Queue()
+#test push LR
 
 # Add cards to the queue
 deck_queue.push("Card1")
