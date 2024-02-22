@@ -1,39 +1,35 @@
-class Card:
-    def __init__(self, suit, rank):
-        self.suit = suit
-        self.rank = rank
-
-class CardQueue:
+class Queue:
     def __init__(self):
         self.cards = []
 
     def push(self, card):
+        # The push method adds a card to the back of the queue
         self.cards.append(card)
-        print(f"Added {card.rank} of {card.suit} to the deck.")
 
     def pop(self):
-        if not self.is_empty():
-            card = self.cards.pop(0)
-            print(f"Removed {card.rank} of {card.suit} from the deck.")
-            return card
-        else:
-            print("The deck is empty.")
+        # The pop method removes and returns the card from the front of the queue
+        if self.is_empty():
+            raise IndexError("Queue is empty, cannot pop.")
+        return self.cards.pop(0)
+
+#comment
 
     def is_empty(self):
+        # Check if the queue is empty
         return len(self.cards) == 0
 
 # Example usage:
-if __name__ == "__main__":
-    # Creating a deck of cards
-    deck = CardQueue()
-    suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
-    ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
+# Create a queue
+deck_queue = Queue()
 
-    for suit in suits:
-        for rank in ranks:
-            card = Card(suit, rank)
-            deck.push(card)
+# Add cards to the queue
+deck_queue.push("Card1")
+deck_queue.push("Card2")
+deck_queue.push("Card3")
 
-    # Removing cards from the deck
-    deck.pop()
-    deck.pop()
+# Pop cards from the queue (FIFO behavior)
+first_card = deck_queue.pop()
+second_card = deck_queue.pop()
+
+print("First card served:", first_card)
+print("Second card served:", second_card)
